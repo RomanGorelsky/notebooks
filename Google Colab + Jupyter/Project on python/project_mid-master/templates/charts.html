@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>The Office Analysis</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{{ url_for('static', filename="vendor/fontawesome-free/css/all.min.css")}}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ url_for('static', filename="css/sb-admin-2.css") }}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">The Office Analysis</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="/tables">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Table</span></a>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item active">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Goreslkii Roman</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <h6 class="m-0 font-weight-bold text-primary">1. These three charts represent mean(), median(), standard deviation() for "Ratings" in each season.</h6>
+
+                            <!-- Chart with mean() ratings -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_mean_ratings.html'%}
+                            </div>
+
+                            <!-- Chart with median() ratings -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_median_ratings.html'%}
+                            </div>
+
+                            <!-- Chart with std() ratings -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_standard_deviation_ratings.html'%}
+                            </div>
+
+                            <h6 class="m-0 font-weight-bold text-primary">Overall, we can see that ratings of episodes mostly remained the same throught the series. The most successful one in this category is the third one, whereas the eighth one is considered to be the worst. It can be seen from "Standard Deviation" that in 3rd and 8th rating value didn't differ that much compared to others. In the ninth season, the differences in values were the greatest, but later we will see why this is so.</h6>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider">
+                            <h6 class="m-0 font-weight-bold text-primary">2. These three charts represent mean(), median(), standard deviation() for "Viewership" in each season.</h6>
+
+                            <!-- Chart with mean() viewership -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_mean_viewership.html'%}
+                            </div>
+
+                            <!-- Chart with median() viewership -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_median_viewership.html'%}
+                            </div>
+
+                            <!-- Chart with std() viewership -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_standard_deviation_viewership.html'%}
+                            </div>
+
+                            <h6 class="m-0 font-weight-bold text-primary">Overall, we can see that viewership changed a lot through the series. If we look at mean() we can draw a conclusion that the fifth season is the most viewed one. But as we will discover later, it happened like this because the most viewed episode in the entire series was released in this season (it can be understood if you look at the graph of "Standard Deviation"). So, in this case it's more appropriate to look at median(), and draw a conclusion that the third season is the most successful in this field. Considering the lowest viewership, we will arrive at a conclusion that it is the ninth season.</h6>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider">
+                            <h6 class="m-0 font-weight-bold text-primary">3. These three charts represent mean(), median(), standard deviation() for "Duration" in each season.</h6>
+
+                            <!-- Chart with mean() duration -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_mean_duration.html'%}
+                            </div>
+
+                            <!-- Chart with median() duration -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_median_duration.html'%}
+                            </div>
+
+                            <!-- Chart with std() duration -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_standard_deviation_duration.html'%}
+                            </div>
+
+                            <h6 class="m-0 font-weight-bold text-primary">Overall, we can see that there were seasons in which episodes deviated from the average for the project of 23 minutes, and a season in which there were no episodes with an extended or shortened timekeeping. For example, all episodes in season 8 had the duration 23 minutes (it's the only season without any changes in "Standard Deviation"). In contrast, the longest (considering the duration of a single episode) season in the entire series is the fourth.</h6>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider">
+                            <h6 class="m-0 font-weight-bold text-primary">4. Charts representing the title of the episode that has the maximum and minimum score in each season.</h6>
+
+                            <!-- Chart with the highest ratings -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_highest.html'%}
+                            </div>
+
+                            <!-- Chart with the lowest ratings -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_lowest.html'%}
+                            </div>
+
+                            <h6 class="m-0 font-weight-bold text-primary">From this comparison we can understand that the eighth season is the worst one considering the rating of episode. It has the episode with the lowest rating among both the best and the worst - "Get the Girl". In contrast, we can conclude that the fifth season is the best. Even though it doesn't have the highest rated episode in this series, its lowest rated episode has "8.0". This means that all other episodes have a score from 8.0 to 9.5. So, the most interesting and well-writen episodes were released under this season. The first place in the score is shared by the episode from the seventh season called "Goodbye, Michael" and the final episode of the entire series "Finale" with score 9.8.</h6>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider">
+                            <h6 class="m-0 font-weight-bold text-primary">5. Chart representing the most and the least viewed season.</h6>
+
+                            <!-- Chart with summary of views -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_sum_of_views.html'%}
+                            </div>
+
+                            <h6 class="m-0 font-weight-bold text-primary">As a result, it can be seen that after the peak in fifth season with 227.67 million views in total the amount of views per each season began to decrease. In this case we can't analyse the fourth season because its number of episodes is less than most of the others. The first season has the least number of viewership but for the sake of cleanliness, it also has the smallest number of episodes. So, a conclusion can be drawn that the series reached its minimum at the final season.</h6>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider">
+                            <h6 class="m-0 font-weight-bold text-primary">6. Chart representing the most and the least viewed episodes in each season.</h6>
+
+                            <!-- Chart with extremum views -->
+                            <div class="card shadow mb-4">
+                                {%include 'fig_extremum_views.html'%}
+                            </div>
+
+                            <h6 class="m-0 font-weight-bold text-primary">So, as I mentioned before, we can't take into account the fifth season when calculating the average views of each season. "Stress Relief" has 22.91 million views and is more than twice exceeds the "Pilot" episode in this parameter. As we discovered earlier the eighth season can be considered as the worst in the whole series by rating. However, this does not prevent it from bypassing the last season in terms of both the most viewed episode and the least. The ninth season has the least viewership in this category. Episodes "Finale" and "Paper Airplane" have 5.69 and 3.25 million views respectively.</h6>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider">
+                            <h6 class="m-0 font-weight-bold text-primary">To sum up, the whole series was going pretty well. Its grades have always stayed around the same mark. But all this lasted until the eighth season. We can say that it became a turning point for the series. Big drops in ratings and views. If this season had not happened, then perhaps the performance of the ninth season would have been much better. It has good grades, but people no longer wanted to watch the series after a fairly passing eighth season.</h6>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ url_for('static', filename="vendor/jquery/jquery.min.js")}}"></script>
+    <script src="{{ url_for('static', filename="vendor/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ url_for('static', filename="vendor/jquery-easing/jquery.easing.min.js")}}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ url_for('static', filename="js/sb-admin-2.min.js")}}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ url_for('static', filename="vendor/chart.js/Chart.min.js")}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ url_for('static', filename="js/demo/chart-area-demo.js")}}"></script>
+    <script src="{{ url_for('static', filename="js/demo/chart-pie-demo.js")}}"></script>
+    <script src="{{ url_for('static', filename="js/demo/chart-bar-demo.js")}}"></script>
+
+</body>
+
+</html>

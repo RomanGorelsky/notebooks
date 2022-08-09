@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>The Office DataSet</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="{{ url_for('static', filename="vendor/fontawesome-free/css/all.min.css")}}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename="css/sb-admin-2.min.css")}}" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="{{ url_for('static', filename="vendor/datatables/dataTables.bootstrap4.min.css")}}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">The Office Analysis</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+           <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/tables">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Table</span></a>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="/charts">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Gorelskii Roman</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                   <!-- The Office DataSet -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">The Office DataSet</h6>
+                        </div>
+                        <div class="card-body">
+                        <div class="table-responsive">
+                                <table id="theofficehtml" class="display">
+
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>EpisodeTitle</th>
+      <th>About</th>
+      <th>Ratings</th>
+      <th>Votes</th>
+      <th>Viewership</th>
+      <th>Duration</th>
+      <th>Date</th>
+      <th>GuestStars</th>
+      <th>Director</th>
+      <th>Writers</th>
+    </tr>
+    <tr>
+      <th>Season</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Pilot</td>
+      <td>The premiere episode introduces the boss and staff of the Dunder-Mifflin Paper Company in Scranton, Pennsylvania in a documentary about the workplace.</td>
+      <td>7.5</td>
+      <td>4936</td>
+      <td>11.20</td>
+      <td>23</td>
+      <td>24 March 2005</td>
+      <td>-</td>
+      <td>Ken Kwapis</td>
+      <td>Ricky Gervais |Stephen Merchant and Greg Daniels</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Diversity Day</td>
+      <td>Michael's off color remark puts a sensitivity trainer in the office for a presentation, which prompts Michael to create his own.</td>
+      <td>8.3</td>
+      <td>4801</td>
+      <td>6.00</td>
+      <td>23</td>
+      <td>29 March 2005</td>
+      <td>-</td>
+      <td>Ken Kwapis</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Health Care</td>
+      <td>Michael leaves Dwight in charge of picking the new healthcare plan for the staff, with disastrous results ahead.</td>
+      <td>7.8</td>
+      <td>4024</td>
+      <td>5.80</td>
+      <td>22</td>
+      <td>5 April 2005</td>
+      <td>-</td>
+      <td>Ken Whittingham</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>The Alliance</td>
+      <td>Just for a laugh, Jim agrees to an alliance with Dwight regarding the downsizing rumors.</td>
+      <td>8.1</td>
+      <td>3915</td>
+      <td>5.40</td>
+      <td>23</td>
+      <td>12 April 2005</td>
+      <td>-</td>
+      <td>Bryan Gordon</td>
+      <td>Michael Schur</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Basketball</td>
+      <td>Michael and his staff challenge the warehouse workers to a basketball game with a bet looming over both parties.</td>
+      <td>8.4</td>
+      <td>4294</td>
+      <td>5.00</td>
+      <td>23</td>
+      <td>19 April 2005</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Greg Daniels</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hot Girl</td>
+      <td>Michael is just one of the many male staff who start vying for the attention of an attractive saleswoman in the office.</td>
+      <td>7.7</td>
+      <td>3854</td>
+      <td>4.80</td>
+      <td>23</td>
+      <td>26 April 2005</td>
+      <td>Amy Adams</td>
+      <td>Amy Heckerling</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Dundies</td>
+      <td>Very much unlike his staff, an overeager Michael can't wait for this year's annual Dundies awards.</td>
+      <td>8.7</td>
+      <td>4315</td>
+      <td>9.00</td>
+      <td>21</td>
+      <td>20 September 2005</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Sexual Harassment</td>
+      <td>The office reviews its sexual harassment policy in light of explicit e-mails.</td>
+      <td>8.2</td>
+      <td>3665</td>
+      <td>7.13</td>
+      <td>22</td>
+      <td>27 September 2005</td>
+      <td>-</td>
+      <td>Ken Kwapis</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Office Olympics</td>
+      <td>Ready to finalize his deal for a new condo, Michael is away with Dwight while Jim rallies the staff together for office games.</td>
+      <td>8.4</td>
+      <td>3665</td>
+      <td>8.30</td>
+      <td>22</td>
+      <td>4 October 2005</td>
+      <td>Nancy Carell</td>
+      <td>Paul Feig</td>
+      <td>Michael Schur</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Fire</td>
+      <td>A fire in the kitchen relegates the staff to the parking lot as help is on its way.</td>
+      <td>8.4</td>
+      <td>3607</td>
+      <td>7.60</td>
+      <td>22</td>
+      <td>11 October 2005</td>
+      <td>Amy Adams</td>
+      <td>Ken Kwapis</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Halloween</td>
+      <td>Michael is pressured by corporate to fire someone, which puts a damper on the office Halloween party.</td>
+      <td>8.1</td>
+      <td>3392</td>
+      <td>8.00</td>
+      <td>30</td>
+      <td>18 October 2005</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Greg Daniels</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Fight</td>
+      <td>Jim rallies the staff together to witness a showdown between Michael and Dwight at Dwight's martial arts school.</td>
+      <td>8.1</td>
+      <td>3388</td>
+      <td>7.90</td>
+      <td>22</td>
+      <td>1 November 2005</td>
+      <td>-</td>
+      <td>Ken Kwapis</td>
+      <td>Gene Stupnitsky | Lee Eisenberg</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Client</td>
+      <td>With Michael and Jan Levinson-Gould away from the office to land a new client, the staff discovers an unproduced screenplay in Michael's office.</td>
+      <td>8.6</td>
+      <td>3533</td>
+      <td>7.50</td>
+      <td>22</td>
+      <td>8 November 2005</td>
+      <td>Tim Meadows</td>
+      <td>Greg Daniels</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Performance Review</td>
+      <td>Instead of talking to his employees about their work, Michael uses their annual review time to gather feedback on his "relationship" with Jan.</td>
+      <td>8.2</td>
+      <td>3216</td>
+      <td>8.00</td>
+      <td>22</td>
+      <td>15 November 2005</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Larry Wilmore</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>E-Mail Surveillance</td>
+      <td>Michael decides to set up e-mail surveillance for all company e-mail, and discovers that Jim has invited everyone over for a barbeque except him.</td>
+      <td>8.4</td>
+      <td>3338</td>
+      <td>8.10</td>
+      <td>23</td>
+      <td>22 November 2005</td>
+      <td>Ken Jeong</td>
+      <td>Paul Feig</td>
+      <td>Jennifer Celotta</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Christmas Party</td>
+      <td>Seeing the party is headed for disastrous boredom, Michael breaks corporate policy to buy alcohol for the staff.</td>
+      <td>8.9</td>
+      <td>3663</td>
+      <td>9.70</td>
+      <td>22</td>
+      <td>6 December 2005</td>
+      <td>-</td>
+      <td>Charles McDougall</td>
+      <td>Michael Schur</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Booze Cruise</td>
+      <td>The Dunder Mifflin staff go on a mandatory "booze cruise" to hear Michael give a motivational talk.</td>
+      <td>8.6</td>
+      <td>3536</td>
+      <td>8.70</td>
+      <td>22</td>
+      <td>5 January 2006</td>
+      <td>Rob Riggle</td>
+      <td>Ken Kwapis</td>
+      <td>Greg Daniels</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Injury</td>
+      <td>Michael's "injury" from a George Foreman Grill distracts the staff from Dwight, the one with the real injury.</td>
+      <td>9.1</td>
+      <td>4314</td>
+      <td>10.30</td>
+      <td>22</td>
+      <td>12 January 2006</td>
+      <td>-</td>
+      <td>Bryan Gordon</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Secret</td>
+      <td>Jim fears the secret he told to Michael, in confidence, will be revealed to the staff.</td>
+      <td>8.3</td>
+      <td>3142</td>
+      <td>8.70</td>
+      <td>22</td>
+      <td>19 January 2006</td>
+      <td>-</td>
+      <td>Dennie Gordon</td>
+      <td>Lee Eisenberg | Gene Stupnitsky</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Carpet</td>
+      <td>Michael's office becomes the victim of an odorous prank which subjects the office to his punishment.</td>
+      <td>7.8</td>
+      <td>3118</td>
+      <td>8.60</td>
+      <td>22</td>
+      <td>26 January 2006</td>
+      <td>-</td>
+      <td>Victor Nelli Jr.</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Boys and Girls</td>
+      <td>Jan comes into the Scranton Branch to give all the female employees a group seminar on women in the workplace. Upset that he is not allowed in on the proceedings, Michael takes all the men ...\n                    See full summaryÃƒâ€šÃ‚Â Ãƒâ€šÃ‚Â»</td>
+      <td>8.2</td>
+      <td>3091</td>
+      <td>5.42</td>
+      <td>22</td>
+      <td>2 February 2006</td>
+      <td>-</td>
+      <td>See full summary</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Valentine's Day</td>
+      <td>When Michael visits Dunder Mifflin corporate headquarters in New York on Valentine's Day, he and Jan are both in for a surprise. Meanwhile, back in Scranton, the office staff celebrates Valentine's Day grade school style.</td>
+      <td>8.3</td>
+      <td>3104</td>
+      <td>8.95</td>
+      <td>22</td>
+      <td>9 February 2006</td>
+      <td>Conan O'Brien</td>
+      <td>Greg Daniels</td>
+      <td>Michael Schur</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Dwight's Speech</td>
+      <td>Michael coaches pompous Dwight on the finer art of public speaking after being named as Salesman of the Year.</td>
+      <td>8.5</td>
+      <td>3283</td>
+      <td>8.40</td>
+      <td>22</td>
+      <td>2 March 2006</td>
+      <td>-</td>
+      <td>Charles McDougall</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Take Your Daughter to Work Day</td>
+      <td>A routine office day is changed when children come to Dunder Mifflin for "Take Your Daughter to Work Day." Michael is surprised when he strikes up a friendship with the five-year old ...\n                    See full summaryÃƒâ€šÃ‚Â Ãƒâ€šÃ‚Â»</td>
+      <td>8.3</td>
+      <td>3212</td>
+      <td>8.80</td>
+      <td>21</td>
+      <td>16 March 2006</td>
+      <td>-</td>
+      <td>See full summary</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Michael's Birthday</td>
+      <td>In celebration of his birthday, Michael makes a mandatory invite of the staff during the workday to go ice skating.</td>
+      <td>8.1</td>
+      <td>3094</td>
+      <td>7.80</td>
+      <td>22</td>
+      <td>30 March 2006</td>
+      <td>-</td>
+      <td>Ken Whittingham</td>
+      <td>Gene Stupnitsky | Lee Eisenberg</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Drug Testing</td>
+      <td>Dwight plays the role of Volunteer Sheriff after finding half a joint in the Dunder Mifflin parking lot leading to an investigation. Pam gives Jim a play challenge which he tries to complete.</td>
+      <td>8.4</td>
+      <td>3172</td>
+      <td>7.80</td>
+      <td>22</td>
+      <td>27 April 2006</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Jennifer Celotta</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Conflict Resolution</td>
+      <td>When Michael takes over conflict resolution duties from HR, chaos ensues at Dunder Mifflin.</td>
+      <td>8.7</td>
+      <td>3253</td>
+      <td>7.40</td>
+      <td>22</td>
+      <td>4 May 2006</td>
+      <td>-</td>
+      <td>Charles McDougall</td>
+      <td>Greg Daniels</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Casino Night</td>
+      <td>The Dunder Mifflin crew holds a casino party at the warehouse and Michael has two dates.</td>
+      <td>9.4</td>
+      <td>4765</td>
+      <td>7.60</td>
+      <td>29</td>
+      <td>11 May 2006</td>
+      <td>-</td>
+      <td>Ken Kwapis</td>
+      <td>Steve Carell</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Gay Witch Hunt</td>
+      <td>Michael apologizes to Oscar, after he finds out he's gay, for calling him a homosexual slur--but his apology outs Oscar to the entire office. And Jim decides to take a promotion at the Stamford office.</td>
+      <td>9.0</td>
+      <td>4133</td>
+      <td>9.11</td>
+      <td>23</td>
+      <td>21 September 2006</td>
+      <td>-</td>
+      <td>Ken Kwapis</td>
+      <td>Greg Daniels</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>The Convention</td>
+      <td>Michael and Dwight go to a convention in Philadelphia and run into Jim, and Michael becomes jealous of Jim's relationship with his new boss. Meanwhile, Pam gets ready for her first date since her engagement.</td>
+      <td>8.2</td>
+      <td>3027</td>
+      <td>7.78</td>
+      <td>22</td>
+      <td>28 September 2006</td>
+      <td>Jerome Bettis</td>
+      <td>Ken Whittingham</td>
+      <td>Gene Stupnitsky | Lee Eisenberg</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>The Coup</td>
+      <td>Michael is in trouble once again as Jan busts him for declaring it's "Movie Monday" where everyone watches a movie and neglects work. Angela pushes Dwight to make a move on Michael's job while Pam and Jim find creative ways to waste time.</td>
+      <td>8.5</td>
+      <td>3175</td>
+      <td>8.89</td>
+      <td>22</td>
+      <td>5 October 2006</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Grief Counseling</td>
+      <td>Michael takes on the role of office grief counselor when he learns that his old boss has died.</td>
+      <td>8.0</td>
+      <td>3049</td>
+      <td>8.83</td>
+      <td>22</td>
+      <td>12 October 2006</td>
+      <td>-</td>
+      <td>Roger Nygard</td>
+      <td>Jennifer Celotta</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Initiation</td>
+      <td>Dwight takes former temp Ryan to his beet farm to initiate Ryan to his new job at Dunder Mifflin.</td>
+      <td>8.1</td>
+      <td>2976</td>
+      <td>8.46</td>
+      <td>22</td>
+      <td>19 October 2006</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Diwali</td>
+      <td>Michael encourages the entire Scranton branch to support Kelly and attend a local celebration of Diwali, the Hindu Festival of Lights. Meanwhile, Andy convinces Jim to turn a late night of work into a drinking game.</td>
+      <td>7.9</td>
+      <td>3082</td>
+      <td>8.81</td>
+      <td>22</td>
+      <td>2 November 2006</td>
+      <td>-</td>
+      <td>Miguel Arteta</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Branch Closing</td>
+      <td>When Jan tells Michael that the Scranton Branch will be shutting down, Michael strives to keep his staff's spirits up. Meanwhile, everyone privately begins to envision how their lives will change in the aftermath.</td>
+      <td>8.6</td>
+      <td>3021</td>
+      <td>8.05</td>
+      <td>31</td>
+      <td>9 November 2006</td>
+      <td>-</td>
+      <td>Tucker Gates</td>
+      <td>Michael Schur</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>The Merger</td>
+      <td>Jan informs Michael that the Scanton branch of Dunder Mifflin will be merging with the Stamford Branch. Jim and Pam are reunited while the other employees of both branches must adjust to their new co-workers.</td>
+      <td>8.7</td>
+      <td>3166</td>
+      <td>8.63</td>
+      <td>30</td>
+      <td>16 November 2006</td>
+      <td>-</td>
+      <td>Ken Whittingham</td>
+      <td>Brent Forrester</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>The Convict</td>
+      <td>Michael learns that one of the new employees at Dunder Mifflin Scranton has a criminal record. Meanwhile, Jim helps Andy make a move on Pam.</td>
+      <td>8.3</td>
+      <td>3151</td>
+      <td>9.07</td>
+      <td>30</td>
+      <td>30 November 2006</td>
+      <td>-</td>
+      <td>Jeffrey Blitz</td>
+      <td>Ricky Gervais | Stephen Merchant</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A Benihana Christmas</td>
+      <td>Trouble among the members of the party planning committee results with Pam and Karen hosting a rival Christmas party, but Michael isn't interested in celebrating after being dumped by Carol.</td>
+      <td>8.8</td>
+      <td>3343</td>
+      <td>8.44</td>
+      <td>42</td>
+      <td>14 December 2006</td>
+      <td>-</td>
+      <td>Harold Ramis</td>
+      <td>Jennifer Celotta</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Back from Vacation</td>
+      <td>Michael isn't supposed to let anyone know that he and Jan went on vacation together in Jamaica, but he accidentally circulates a compromising photo of them to the office via e-mail.</td>
+      <td>8.5</td>
+      <td>3001</td>
+      <td>8.80</td>
+      <td>21</td>
+      <td>4 January 2007</td>
+      <td>-</td>
+      <td>Julian Farino</td>
+      <td>Justin Spitzer</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Traveling Salesmen</td>
+      <td>Dwight does a favor for Angela to keep her from getting in trouble. Andy finds out and uses it against him to get in tighter with Michael. Now Dwight must fess up, which will reveal his relationship with Angela, or risk getting fired.</td>
+      <td>8.6</td>
+      <td>3053</td>
+      <td>10.12</td>
+      <td>22</td>
+      <td>11 January 2007</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Michael Schur | Lee Eisenberg | Gene Stupnitsky</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>The Return</td>
+      <td>Andy does the impossible--he makes everyone in the office miss Dwight, who is forced to take a job at Staples. Meanwhile, Oscar comes back to the office and Michael predictably throws a stereotypical Mexican party to celebrate.</td>
+      <td>8.8</td>
+      <td>3211</td>
+      <td>10.20</td>
+      <td>28</td>
+      <td>18 January 2007</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Lee Eisenberg | Gene Stupnitsky | Michael Schur</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ben Franklin</td>
+      <td>Michael asks Jim to get a male stripper for Phyllis's office bachelorette party, but he gets a Ben Franklin impersonator instead. Meanwhile, the men's bachelor party goes as planned until Michael becomes uncomfortable with the stripper.</td>
+      <td>8.1</td>
+      <td>2975</td>
+      <td>10.11</td>
+      <td>21</td>
+      <td>1 February 2007</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Phyllis' Wedding</td>
+      <td>Michael exaggerates the importance of his small role in Phyllis's wedding and makes an ass out of himself, and Pam notices that Phyllis stole all of her wedding ideas from her original wedding plans.</td>
+      <td>8.2</td>
+      <td>2995</td>
+      <td>8.84</td>
+      <td>21</td>
+      <td>8 February 2007</td>
+      <td>-</td>
+      <td>Ken Whittingham</td>
+      <td>Caroline Williams</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Business School</td>
+      <td>Michael is a guest speaker for Ryan's business class, but they have a falling-out after Michael finds out that Ryan spoke negatively about Dunder-Mifflin. And back at the office, Dwight tries to kill a bat that he found in the ceiling.</td>
+      <td>8.9</td>
+      <td>3460</td>
+      <td>8.84</td>
+      <td>22</td>
+      <td>15 February 2007</td>
+      <td>-</td>
+      <td>Joss Whedon</td>
+      <td>Brent Forrester</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Cocktails</td>
+      <td>While Michael and Jan go to their first Dunder Mifflin outing as an official couple, the office workers left behind go out for happy hour. During happy hour, Roy finds out that Jim and Pam kissed at Casino Night.</td>
+      <td>8.5</td>
+      <td>2969</td>
+      <td>8.30</td>
+      <td>21</td>
+      <td>22 February 2007</td>
+      <td>-</td>
+      <td>J.J. Abrams</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>The Negotiation</td>
+      <td>Dwight saves Jim from an attack by Roy, but Dwight won't allow Jim to thank him for it. Meanwhile, Darryl asks Michael for a pay raise, and Michael discovers that he is woefully underpaid--so Michael goes to headquarters to ask for one himself.</td>
+      <td>9.0</td>
+      <td>3368</td>
+      <td>6.74</td>
+      <td>30</td>
+      <td>5 April 2007</td>
+      <td>-</td>
+      <td>Jeffrey Blitz</td>
+      <td>Michael Schur</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Safety Training</td>
+      <td>Andy returns to the office after weeks of anger management training, determined to make a fresh start with all the Dunder-Mifflin employees. Meanwhile, it's safety training day in the office, and Michael and Dwight are on a mission to illuminate the dangers of the workplace.</td>
+      <td>8.8</td>
+      <td>3164</td>
+      <td>7.71</td>
+      <td>21</td>
+      <td>12 April 2007</td>
+      <td>-</td>
+      <td>Harold Ramis</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Product Recall</td>
+      <td>Michael tries to be proactive during a watermark crisis, but only makes the situation worse. Meanwhile, Angela has trouble being apologetic with customers, and Andy discovers a secret about his new girlfriend.</td>
+      <td>8.7</td>
+      <td>3138</td>
+      <td>7.56</td>
+      <td>21</td>
+      <td>26 April 2007</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Justin Spitzer | Brent Forrester</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Women's Appreciation</td>
+      <td>Phyllis gets flashed in the parking lot, and Dwight goes all out to secure the premises. Michael ostensibly takes the women in the office to the mall to comfort them, but he's really doing it to get advice about breaking up with Jan.</td>
+      <td>8.8</td>
+      <td>3158</td>
+      <td>7.00</td>
+      <td>29</td>
+      <td>3 May 2007</td>
+      <td>-</td>
+      <td>Tucker Gates</td>
+      <td>Gene Stupnitsky | Lee Eisenberg</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Beach Games</td>
+      <td>Michael uses "beach day" at Dunder-Mifflin to find out which employee would be his most capable replacement, just in case he receives the promotion to the New York office that he's applied for.</td>
+      <td>9.2</td>
+      <td>3641</td>
+      <td>7.20</td>
+      <td>28</td>
+      <td>10 May 2007</td>
+      <td>-</td>
+      <td>Harold Ramis</td>
+      <td>Jennifer Celotta | Greg Daniels</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>The Job</td>
+      <td>Michael appoints Dwight as regional manager, anticipating that he will receive the job at corporate. Jim and Karen also interview for the same position. And Michael gets back together with Jan after she gets a boob job.</td>
+      <td>9.3</td>
+      <td>3898</td>
+      <td>7.88</td>
+      <td>42</td>
+      <td>17 May 2007</td>
+      <td>-</td>
+      <td>Ken Kwapis</td>
+      <td>Paul Lieberstein | Michael Schur</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Fun Run</td>
+      <td>Michael accidentally runs over Meridith in the parking lot, and his guilt causes him to organize a 5-K run for her. Dwight and Angela have a falling-out after he kills her cat, and Jim and Pam's relationship is discovered.</td>
+      <td>8.8</td>
+      <td>3635</td>
+      <td>9.70</td>
+      <td>42</td>
+      <td>27 September 2007</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Greg Daniels</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Dunder Mifflin Infinity</td>
+      <td>Michael feels threatened when Ryan returns to the Scranton office to share his ideas about the future of Dunder Mifflin. Jim and Pam's relationship is shared with the entire office, while Angela and Dwight's relationship is on the rocks.</td>
+      <td>8.3</td>
+      <td>2934</td>
+      <td>8.49</td>
+      <td>42</td>
+      <td>4 October 2007</td>
+      <td>-</td>
+      <td>Craig Zisk</td>
+      <td>Michael Schur</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Launch Party</td>
+      <td>The Dunder Mifflin Infinity website is launching and Michael is excited about going to the big launch party in New York while Angela plans a satellite party for the Scranton branch. ...\n                    See full summaryÃƒâ€šÃ‚Â Ãƒâ€šÃ‚Â»</td>
+      <td>8.4</td>
+      <td>2844</td>
+      <td>8.91</td>
+      <td>42</td>
+      <td>11 October 2007</td>
+      <td>Kevin McHale</td>
+      <td>See full summary</td>
+      <td>Jennifer Celotta</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Money</td>
+      <td>As Jan renovates the condo, Michael confronts his growing debt every way he can, which includes pressuring his employees for a loan. Pam and Jim spend a night out on Dwight's family beet farm, now a bed and breakfast.</td>
+      <td>8.7</td>
+      <td>3073</td>
+      <td>8.50</td>
+      <td>42</td>
+      <td>18 October 2007</td>
+      <td>-</td>
+      <td>Paul Lieberstein</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Local Ad</td>
+      <td>Michael tries to make a local Dunder Mifflin commercial that is better than the one the professional ad agency made for them. Meanwhile, Andy tries to confide in Dwight about his new relationship with Angela.</td>
+      <td>8.8</td>
+      <td>3125</td>
+      <td>8.98</td>
+      <td>22</td>
+      <td>25 October 2007</td>
+      <td>-</td>
+      <td>Jason Reitman</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Branch Wars</td>
+      <td>Michael and Dwight try to play a prank on Karen, who is now manager of the Utica branch, after she tries to steal Stanley from the Scranton office. Meanwhile, Pam, Toby, and Oscar start their own exclusive office book club.</td>
+      <td>8.5</td>
+      <td>2878</td>
+      <td>8.39</td>
+      <td>30</td>
+      <td>1 November 2007</td>
+      <td>-</td>
+      <td>Joss Whedon</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Survivor Man</td>
+      <td>After Michael isn't invited to a camping trip with Ryan, he sets out to prove that he can brave it out in the wilderness by himself. Jim, who is in charge of the office while Michael is gone, tries to change the birthday party policy.</td>
+      <td>8.2</td>
+      <td>2775</td>
+      <td>8.29</td>
+      <td>30</td>
+      <td>8 November 2007</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Steve Carell</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>The Deposition</td>
+      <td>Michael is put in an awkward position when Jan sues Dunder Mifflin for wrongful termination and he is deposed as a witness. Meanwhile, Kelly begins smack-talking Pam after Darryl beats Jim at Ping-Pong.</td>
+      <td>8.7</td>
+      <td>2923</td>
+      <td>8.86</td>
+      <td>30</td>
+      <td>15 November 2007</td>
+      <td>-</td>
+      <td>Julian Farino</td>
+      <td>Lester Lewis</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Dinner Party</td>
+      <td>Michael invites Jim and Pam and Andy and Angela to a couples-only dinner party, which makes Dwight very jealous. However, the only thing he's missing is a ringside seat to witness Michael and Jan's extremely dysfunctional home life.</td>
+      <td>9.5</td>
+      <td>5601</td>
+      <td>9.22</td>
+      <td>30</td>
+      <td>10 April 2008</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Gene Stupnitsky | Lee Eisenberg</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Chair Model</td>
+      <td>Kevin and Andy team up to reclaim the stolen Dunder Mifflin parking spaces, which forces them into a showdown with the other four bosses of the office park. Meanwhile, Michael becomes fascinated by a woman modeling chairs in a catalog.</td>
+      <td>8.0</td>
+      <td>2757</td>
+      <td>9.81</td>
+      <td>30</td>
+      <td>17 April 2008</td>
+      <td>-</td>
+      <td>Jeffrey Blitz</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Night Out</td>
+      <td>Michael and Dwight go to New York to party with Ryan, who is having lots of personal and professional problems. The rest of the office employees work late, and wind up getting locked in the business park.</td>
+      <td>8.6</td>
+      <td>2872</td>
+      <td>7.56</td>
+      <td>21</td>
+      <td>24 April 2008</td>
+      <td>-</td>
+      <td>Ken Whittingham</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Did I Stutter?</td>
+      <td>Michael tries to figure out how to respond to Stanley's insubordination during a meeting, and Dwight buys Andy's vehicle and immediately flips it for more money.</td>
+      <td>8.3</td>
+      <td>2756</td>
+      <td>7.67</td>
+      <td>22</td>
+      <td>1 May 2008</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Brent Forrester | Justin Spitzer</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Job Fair</td>
+      <td>Dunder-Mifflin participates in a high school job fair, but few students are interested. Jim, Andy, and Kevin play a round of golf with a prospective client. Back at the office, everyone but Dwight and Angela leave for the day.</td>
+      <td>7.8</td>
+      <td>2627</td>
+      <td>7.22</td>
+      <td>30</td>
+      <td>8 May 2008</td>
+      <td>-</td>
+      <td>Tucker Gates</td>
+      <td>Lee Eisenberg | Gene Stupnitsky</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Goodbye, Toby</td>
+      <td>Michael throws an extravagant going-away party for Toby, and falls in love with the woman who is replacing him. Jim plans to propose to Pam at the party, but gets out-staged. Back at corporate, Ryan is arrested for fraud.</td>
+      <td>9.3</td>
+      <td>3939</td>
+      <td>8.07</td>
+      <td>42</td>
+      <td>15 May 2008</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Jennifer Celotta | Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Weight Loss</td>
+      <td>Michael tries to motivate the Scranton branch to lose weight as part of an interoffice competition. Jim is lost after Pam leaves for art school in New York, and Angela continues to see Dwight even though she is now engaged to Andy.</td>
+      <td>8.8</td>
+      <td>3264</td>
+      <td>9.20</td>
+      <td>43</td>
+      <td>25 September 2008</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Lee Eisenberg | Gene Stupnitsky</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Business Ethics</td>
+      <td>A confession at an H.R. business ethics seminar leads to a dispute between Michael and Holly over whether Meredith should be fired. Dwight tries to prove to Jim how long he can go without taking a personal break.</td>
+      <td>8.3</td>
+      <td>2654</td>
+      <td>8.99</td>
+      <td>22</td>
+      <td>9 October 2008</td>
+      <td>Wendi McLendon-Covey</td>
+      <td>Jeffrey Blitz</td>
+      <td>Ryan Koh</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Baby Shower</td>
+      <td>After planning an office baby shower for Jan, Michael is upset when he finds out that she had the baby without him--even though he's already been told that he's not the baby's father.</td>
+      <td>8.0</td>
+      <td>2621</td>
+      <td>8.07</td>
+      <td>22</td>
+      <td>16 October 2008</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Aaron Shure</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Crime Aid</td>
+      <td>Michael and Holly have sex for the first time, and Michael holds a fund-raiser for the office after it is burglarized. Dwight confides in Phyllis after Andy and Angela set a wedding date, and Jim runs into Pam's ex-fiancÃƒÆ’Ã‚Â©, Roy.</td>
+      <td>8.1</td>
+      <td>2525</td>
+      <td>7.74</td>
+      <td>30</td>
+      <td>23 October 2008</td>
+      <td>-</td>
+      <td>Jennifer Celotta</td>
+      <td>Charlie Grandy</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Employee Transfer</td>
+      <td>Holly is transferred back to New Hampshire after corporate discovers that she and Michael are dating. Dwight tries to apply to Cornell to get under Andy's skin. Jim's brothers and Pam decide to play a trick on Jim when they meet for lunch.</td>
+      <td>8.0</td>
+      <td>2600</td>
+      <td>9.32</td>
+      <td>22</td>
+      <td>30 October 2008</td>
+      <td>-</td>
+      <td>David Rogers</td>
+      <td>Anthony Q. Farrell</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Customer Survey</td>
+      <td>Dwight and Jim believe that something is suspicious about their low customer performance ratings. After consulting with Angela, Andy finds the perfect site for their wedding--Dwight's beet farm.</td>
+      <td>8.5</td>
+      <td>2717</td>
+      <td>8.35</td>
+      <td>22</td>
+      <td>6 November 2008</td>
+      <td>-</td>
+      <td>Stephen Merchant</td>
+      <td>Lester Lewis</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Business Trip</td>
+      <td>David Wallace sends Michael on a business trip to Winnipeg to help him forget about Holly's transfer to Nashua, and Pam tells Jim that she failed a class and has to stay in New York City.</td>
+      <td>8.2</td>
+      <td>2516</td>
+      <td>8.18</td>
+      <td>30</td>
+      <td>13 November 2008</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Brent Forrester</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Frame Toby</td>
+      <td>When Michael discovers that corporate has brought back Toby to replace Holly, he tries to frame him with drugs and to get him fired. Meanwhile, Pam has issues with the disgusting microwave....\n                    See full summaryÃƒâ€šÃ‚Â Ãƒâ€šÃ‚Â»</td>
+      <td>8.6</td>
+      <td>2799</td>
+      <td>8.40</td>
+      <td>30</td>
+      <td>20 November 2008</td>
+      <td>-</td>
+      <td>See full summary</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Surplus</td>
+      <td>Michael has to spend the office surplus by they end of the day, but he can't decide between a copier or new chairs. Dwight plays a dirty trick on Angela as they prepare for Andy and Angela's wedding on the beet farm.</td>
+      <td>8.8</td>
+      <td>2776</td>
+      <td>8.33</td>
+      <td>22</td>
+      <td>4 December 2008</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Gene Stupnitsky | Lee Eisenberg</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Moroccan Christmas</td>
+      <td>Phyllis blackmails Angela into doing the work for the Christmas party, which Michael turns into an intervention after Meredith gets drunk and sets her hair on fire. Meanwhile, Dwight corners the market on a popular Christmas gift.</td>
+      <td>8.4</td>
+      <td>2613</td>
+      <td>8.79</td>
+      <td>30</td>
+      <td>11 December 2008</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Justin Spitzer</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Duel</td>
+      <td>Moments before he leaves for New York for a meeting with David Wallace, Michael tells Andy that Angela and Dwight are seeing each other. Andy and Dwight then decide to have it out in the parking lot.</td>
+      <td>8.7</td>
+      <td>2711</td>
+      <td>8.50</td>
+      <td>30</td>
+      <td>15 January 2009</td>
+      <td>-</td>
+      <td>Dean Holland</td>
+      <td>Jennifer Celotta</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Prince Family Paper</td>
+      <td>Michael's conscience gets the best of him after he and Dwight go undercover to scout a family-run competitor. Back at the office, everyone else spends the day debating whether Hilary Swank is hot.</td>
+      <td>8.0</td>
+      <td>2615</td>
+      <td>8.74</td>
+      <td>22</td>
+      <td>22 January 2009</td>
+      <td>-</td>
+      <td>Asaad Kelada</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Stress Relief</td>
+      <td>Dwight's too-realistic fire alarm gives Stanley a heart attack. When he returns, Michael learns that he is the cause of Stanley's stress. To remedy the situation, he forces the office to throw a roast for him.</td>
+      <td>9.7</td>
+      <td>8170</td>
+      <td>22.91</td>
+      <td>60</td>
+      <td>1 February 2009</td>
+      <td>Cloris Leachman, Jack Black, Jessica Alba</td>
+      <td>Jeffrey Blitz</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Lecture Circuit: Part 1</td>
+      <td>While on lecture tour to other Dunder Mifflin branches, Michael and Pam discover that Jim's ex-girlfriend Karen is pregnant. At the office, Andy falls for a prospective client, and Jim and Dwight try to set up Kelly's birthday party.</td>
+      <td>8.2</td>
+      <td>2474</td>
+      <td>8.39</td>
+      <td>30</td>
+      <td>5 February 2009</td>
+      <td>-</td>
+      <td>Ken Kwapis</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Lecture Circuit: Part 2</td>
+      <td>Michael and Pam go to Nashua and discover that Holly has a new boyfriend. At the office, Jim and Dwight try to come up with a theme for Kelly's birthday party, and Angela gets a new cat.</td>
+      <td>8.1</td>
+      <td>2431</td>
+      <td>8.89</td>
+      <td>30</td>
+      <td>12 February 2009</td>
+      <td>-</td>
+      <td>Ken Kwapis</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Blood Drive</td>
+      <td>Michael holds a lonely hearts party on Valentine's Day at the office, hoping that he will run into a woman he met earlier that day at a blood drive. Meanwhile, Jim and Pam have an awkward lunch with Phillis and Bob Vance.</td>
+      <td>8.0</td>
+      <td>2464</td>
+      <td>8.63</td>
+      <td>22</td>
+      <td>5 March 2009</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Brent Forrester</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Golden Ticket</td>
+      <td>Michael asks Dwight to be the scapegoat for one of his business ideas that backfired badly on him. But when that idea has an unexpected positive upside, Dwight still takes credit and Michael becomes furious.</td>
+      <td>8.7</td>
+      <td>2667</td>
+      <td>7.51</td>
+      <td>30</td>
+      <td>12 March 2009</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>New Boss</td>
+      <td>Michael gets upset when he gets a new boss to act as a buffer between him and David Wallace, and he gets even more upset when he disbands the Party Planning Committee and cancels Michael's fifteenth anniversary party.</td>
+      <td>8.3</td>
+      <td>2503</td>
+      <td>7.95</td>
+      <td>30</td>
+      <td>19 March 2009</td>
+      <td>Idris Elba</td>
+      <td>Paul Feig</td>
+      <td>Lee Eisenberg | Gene Stupnitsky</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Two Weeks</td>
+      <td>As Michael prepares to leave Dunder Mifflin, he announces that he will form his own paper company. Will anybody join him?</td>
+      <td>8.4</td>
+      <td>2492</td>
+      <td>8.45</td>
+      <td>30</td>
+      <td>26 March 2009</td>
+      <td>-</td>
+      <td>Paul Lieberstein</td>
+      <td>Aaron Shure</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Dream Team</td>
+      <td>Michael and Pam begin their first day as the Michael Scott Paper Company putting together the rest of the staff and trying to raise money.</td>
+      <td>8.3</td>
+      <td>2484</td>
+      <td>7.20</td>
+      <td>30</td>
+      <td>9 April 2009</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Michael Scott Paper Company</td>
+      <td>Tension and disillusionment begin to emerge as Michael, Pam, and Ryan move the Michael Scott Paper Company into a cramped "workspace" at the business park.</td>
+      <td>8.7</td>
+      <td>2718</td>
+      <td>7.94</td>
+      <td>22</td>
+      <td>9 April 2009</td>
+      <td>-</td>
+      <td>Gene Stupnitsky</td>
+      <td>Justin Spitzer</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Heavy Competition</td>
+      <td>Dwight chooses loyalty to Dunder Mifflin over loyalty to Michael, which leads to a bitter battle between Michael and Dwight over Dwight's accounts. Back at Dunder Mifflin, Jim pretends to confide in Andy.</td>
+      <td>8.7</td>
+      <td>2568</td>
+      <td>8.24</td>
+      <td>30</td>
+      <td>16 April 2009</td>
+      <td>-</td>
+      <td>Ken Whittingham</td>
+      <td>Ryan Koh</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Broke</td>
+      <td>The Michael Scott Paper Company is gaining clients by offering lower prices than Dunder Mifflin, but is going broke in the process. However, Dunder Mifflin is losing clients to Michael, and is desperate to buy him out.</td>
+      <td>9.2</td>
+      <td>3409</td>
+      <td>7.21</td>
+      <td>30</td>
+      <td>23 April 2009</td>
+      <td>-</td>
+      <td>Steve Carell</td>
+      <td>Charlie Grandy</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Casual Friday</td>
+      <td>Michael returns to Dunder Mifflin and brings Ryan and Pam in as salespeople, but the existing salespeople demand that Michael return the clients they stole back to them. Meanwhile, some employees take the idea of Casual Friday too far.</td>
+      <td>8.3</td>
+      <td>2467</td>
+      <td>7.31</td>
+      <td>22</td>
+      <td>30 April 2009</td>
+      <td>-</td>
+      <td>Brent Forrester</td>
+      <td>Anthony Q. Farrell</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Cafe Disco</td>
+      <td>Michael tries to create a place to escape from work in the storage room that used to house the Michael Scott Paper Company, while Jim and Pam consider taking off and getting married that day.</td>
+      <td>8.7</td>
+      <td>2814</td>
+      <td>7.71</td>
+      <td>30</td>
+      <td>7 May 2009</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Warren Lieberstein | Halsted Sullivan</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Company Picnic</td>
+      <td>Michael runs into Holly at the company picnic, and the two of them accidentally reveal that the Buffalo branch is closing during a comedy skit before corporate has made the announcement.</td>
+      <td>9.0</td>
+      <td>2954</td>
+      <td>6.72</td>
+      <td>30</td>
+      <td>14 May 2009</td>
+      <td>-</td>
+      <td>Ken Kwapis</td>
+      <td>Jennifer Celotta | Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Gossip</td>
+      <td>Michael regrets revealing that Stanley is having an affair, so he spreads a bunch of lies about everyone else to cover his tracks--except that one of the lies that he spread actually turns out to be true.</td>
+      <td>8.8</td>
+      <td>2866</td>
+      <td>8.20</td>
+      <td>30</td>
+      <td>17 September 2009</td>
+      <td>-</td>
+      <td>Paul Lieberstein</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>The Meeting</td>
+      <td>Michael sabotages--then promotes--Jim's efforts at getting a promotion, while Dwight and Toby try to prove that Darryl has submitted a fraudulent medical claim.</td>
+      <td>8.1</td>
+      <td>2349</td>
+      <td>7.33</td>
+      <td>30</td>
+      <td>24 September 2009</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Aaron Shure</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>The Promotion</td>
+      <td>Jim discovers just how hard being the boss can be when David Wallace forces Michael and him to determine which employees will be getting a raise.</td>
+      <td>8.0</td>
+      <td>2344</td>
+      <td>7.28</td>
+      <td>30</td>
+      <td>1 October 2009</td>
+      <td>-</td>
+      <td>Jennifer Celotta</td>
+      <td>Jennifer Celotta</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Niagara: Part 1</td>
+      <td>The Office travels to Niagara Falls to celebrate Jim and Pam's wedding under strict orders not to mention Pam's pregnancy. Michael, Dwight, and Andy all want to hook up with guests at the wedding and Michael and Dwight meet twins.</td>
+      <td>9.4</td>
+      <td>4560</td>
+      <td>9.42</td>
+      <td>30</td>
+      <td>8 October 2009</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Greg Daniels | Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Niagara: Part 2</td>
+      <td>Pam is forced to deal with an embarrassing injury for Andy the night before her wedding, while Kevin deals with the loss of his dress shoes on the morning of the ceremony.</td>
+      <td>9.4</td>
+      <td>3114</td>
+      <td>9.42</td>
+      <td>19</td>
+      <td>8 October 2009</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Greg Daniels | Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Mafia</td>
+      <td>Michael meets with an insurance salesman that visits the office and is later convinced by Dwight and Andy that he is part of the mafia.</td>
+      <td>7.6</td>
+      <td>2464</td>
+      <td>8.10</td>
+      <td>30</td>
+      <td>15 October 2009</td>
+      <td>Mike Starr</td>
+      <td>David Rogers</td>
+      <td>Brent Forrester</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>The Lover</td>
+      <td>Jim and Pam return from their honeymoon and learn, to their horror, that Michael is dating Pam's mom. Meanwhile, Dwight gives Jim a "gift"--which actually has a listening device attached to it.</td>
+      <td>8.6</td>
+      <td>2590</td>
+      <td>8.52</td>
+      <td>30</td>
+      <td>22 October 2009</td>
+      <td>-</td>
+      <td>Lee Eisenberg</td>
+      <td>Lee Eisenberg | Gene Stupnitsky</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Koi Pond</td>
+      <td>Michael is upset when he becomes the butt of all the office jokes after he falls in a koi pond. Andy and Pam go out together on some cold calls, and everybody mistakes them as a married couple.</td>
+      <td>8.2</td>
+      <td>2348</td>
+      <td>8.20</td>
+      <td>30</td>
+      <td>29 October 2009</td>
+      <td>-</td>
+      <td>Reginald Hudlin</td>
+      <td>Warren Lieberstein | Halsted Sullivan</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Double Date</td>
+      <td>Michael sparks more anger from Pam when he breaks up with her mom on her birthday after he finds out she's 58, and Dwight unsuccessfully tries to get everyone in the office to owe him a favor.</td>
+      <td>8.1</td>
+      <td>2314</td>
+      <td>7.94</td>
+      <td>30</td>
+      <td>5 November 2009</td>
+      <td>-</td>
+      <td>Seth Gordon</td>
+      <td>Charlie Grandy</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Murder</td>
+      <td>The entire office is preoccupied about rumors of Dunder Mifflin's bankruptcy. Michael tries to create a distraction by engaging everyone in murder-mystery game, but Jim wonders if that is a good idea.</td>
+      <td>8.7</td>
+      <td>2761</td>
+      <td>7.76</td>
+      <td>23</td>
+      <td>12 November 2009</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Daniel Chun</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Shareholder Meeting</td>
+      <td>Michael speaks out of line at the Dunder Mifflin shareholders meeting and creates a big problem for management, while Jim discovers that nobody in the office thinks he's the "real" boss.</td>
+      <td>8.2</td>
+      <td>2336</td>
+      <td>7.43</td>
+      <td>30</td>
+      <td>19 November 2009</td>
+      <td>-</td>
+      <td>Charles McDougall</td>
+      <td>Justin Spitzer</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Scott's Tots</td>
+      <td>Ten years ago, Michael promised a group of third graders he would pay for their college tuition if they graduated. Now comes time to pay, and he can't do it. At the office, Dwight's employee of the month idea gets Jim in big trouble.</td>
+      <td>8.3</td>
+      <td>2681</td>
+      <td>8.10</td>
+      <td>30</td>
+      <td>3 December 2009</td>
+      <td>-</td>
+      <td>B.J. Novak</td>
+      <td>Gene Stupnitsky | Lee Eisenberg</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Secret Santa</td>
+      <td>Michael gets upset when Jim promises Phyllis that she can be the office Santa, but the office Christmas party may be overshadowed by some bad news from David Wallace.</td>
+      <td>8.5</td>
+      <td>2467</td>
+      <td>8.51</td>
+      <td>30</td>
+      <td>10 December 2009</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>The Banker</td>
+      <td>A banker representing a potential buyer comes to the Scranton branch to interview the H.R. department before the sale goes through.</td>
+      <td>6.8</td>
+      <td>3039</td>
+      <td>7.29</td>
+      <td>30</td>
+      <td>21 January 2010</td>
+      <td>-</td>
+      <td>Jeffrey Blitz</td>
+      <td>Jason Kessler</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Sabre</td>
+      <td>Michael hates the changes that Dunder Mifflin's new owner is implementing, so he turns to David Wallace for advice. Jim and Pam find the perfect day care center, but Jim's mistake threatens to ruin the interview.</td>
+      <td>7.7</td>
+      <td>2251</td>
+      <td>7.36</td>
+      <td>30</td>
+      <td>4 February 2010</td>
+      <td>Christian Slater</td>
+      <td>John Krasinski</td>
+      <td>Jennifer Celotta</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Manager and Salesman</td>
+      <td>Sabre's CEO wants the Scranton branch to have one manager, and Michael voluntarily steps down and lets Jim become the boss when he finds out that salespeople make more money. However, he soon comes to regret the decision.</td>
+      <td>8.1</td>
+      <td>2223</td>
+      <td>7.40</td>
+      <td>30</td>
+      <td>11 February 2010</td>
+      <td>-</td>
+      <td>Marc Webb</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>The Delivery: Part 1</td>
+      <td>Pam goes into labor and Jim is ready to take her to the hospital, but she refuses to go. Meanwhile, inspired by Pam and Jim's baby, Dwight and Angela try to reach a "business agreement" to have a baby of their own.</td>
+      <td>8.4</td>
+      <td>2347</td>
+      <td>9.00</td>
+      <td>30</td>
+      <td>4 March 2010</td>
+      <td>-</td>
+      <td>Seth Gordon</td>
+      <td>Daniel Chun</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>The Delivery: Part 2</td>
+      <td>After the baby is born, Pam has trouble getting the baby to breastfeed. At the office, Michael takes credit for hooking Jim and Pam up, and tries to do the same thing for Kevin and Erin, making Andy jealous.</td>
+      <td>8.5</td>
+      <td>2370</td>
+      <td>9.00</td>
+      <td>30</td>
+      <td>4 March 2010</td>
+      <td>Mellisa Rauch</td>
+      <td>Harold Ramis</td>
+      <td>Daniel Chun</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>St. Patrick's Day</td>
+      <td>It's St. Patrick's Day, and the CEO forces the office to work late because she won't leave. In addition, Michael unsuccessfully tries to suck up to his new boss, and Andy and Erin's first date is delayed because Erin is sick.</td>
+      <td>7.7</td>
+      <td>2196</td>
+      <td>7.51</td>
+      <td>30</td>
+      <td>11 March 2010</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Jonathan Hughes</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>New Leads</td>
+      <td>When the sales staff begins trying to boss around everyone in the office, Michael tries to teach them a lesson by withholding a valuable set of sales leads.</td>
+      <td>7.7</td>
+      <td>2154</td>
+      <td>7.63</td>
+      <td>23</td>
+      <td>18 March 2010</td>
+      <td>-</td>
+      <td>Brent Forrester</td>
+      <td>Brent Forrester</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Happy Hour</td>
+      <td>Oscar gets everybody in the office to go to Happy Hour so that he can hit on a coworker in shipping. Pam tries to set up Michael with a friend at the bar, but Michael's alter ego, "Date Mike," threatens to spoil the entire evening.</td>
+      <td>8.6</td>
+      <td>2503</td>
+      <td>7.17</td>
+      <td>30</td>
+      <td>25 March 2010</td>
+      <td>-</td>
+      <td>Matt Sohn</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Secretary's Day</td>
+      <td>Michael creates problems for Andy on Secretary's Day when he tells Erin that Andy was engaged to Angela, and Kevin is upset after Oscar makes a video comparing Kevin to Cookie Monster.</td>
+      <td>7.8</td>
+      <td>2168</td>
+      <td>6.30</td>
+      <td>30</td>
+      <td>22 April 2010</td>
+      <td>-</td>
+      <td>Steve Carell</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Body Language</td>
+      <td>Michael is hopeful that a potential client is interested in him, but everyone in the office except Pam thinks he's wasting his time. Meanwhile, Dwight recruits Kelly to apply for the Sabre minority management training program.</td>
+      <td>8.0</td>
+      <td>2197</td>
+      <td>7.01</td>
+      <td>30</td>
+      <td>29 April 2010</td>
+      <td>-</td>
+      <td>Mindy Kaling</td>
+      <td>Justin Spitzer</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>The Cover-Up</td>
+      <td>Michael becomes convinced that Donna is having an affair and puts Dwight on the case, but Pam soon discovers that the suspicions may be true. Meanwhile, Darryl gets revenge on Andy for an earlier incident.</td>
+      <td>8.1</td>
+      <td>2199</td>
+      <td>6.84</td>
+      <td>30</td>
+      <td>6 May 2010</td>
+      <td>-</td>
+      <td>Rainn Wilson</td>
+      <td>Gene Stupnitsky | Lee Eisenberg</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>The Chump</td>
+      <td>Michael continues to see Donna even after learning she's married and meeting her husband, Dwight and Angela take their baby contract to an arbitrator, and Jim and Pam struggle to stay awake at the office.</td>
+      <td>7.8</td>
+      <td>2113</td>
+      <td>6.60</td>
+      <td>30</td>
+      <td>13 May 2010</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Aaron Shure</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Whistleblower</td>
+      <td>Jo comes to the Scranton branch to find the whistle-blower. However, three different people have confessed to Michael, Michael is protecting them, and the person most people think is the culprit is keeping his mouth shut.</td>
+      <td>8.0</td>
+      <td>2184</td>
+      <td>6.60</td>
+      <td>30</td>
+      <td>20 May 2010</td>
+      <td>-</td>
+      <td>Paul Lieberstein</td>
+      <td>Warren Lieberstein | Halsted Sullivan</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Nepotism</td>
+      <td>Everybody demands that Michael fire the new office assistant, but he won't because he's his nephew. Meanwhile, Pam tries to play a prank on Dwight, who has bought the office building, to make up for ruining Jim's prank.</td>
+      <td>8.4</td>
+      <td>2520</td>
+      <td>8.40</td>
+      <td>30</td>
+      <td>23 September 2010</td>
+      <td>Evan Peters</td>
+      <td>Jeffrey Blitz</td>
+      <td>Daniel Chun</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Counseling</td>
+      <td>Michael is forced to go through counseling with Toby, Dwight seeks revenge on a local mall that refused his business, and Pam tries to fake her way to a promotion.</td>
+      <td>8.2</td>
+      <td>2272</td>
+      <td>7.36</td>
+      <td>30</td>
+      <td>30 September 2010</td>
+      <td>-</td>
+      <td>Jeffrey Blitz</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Andy's Play</td>
+      <td>Andy invites the entire office to watch him in the community theater production of "Sweeney Todd," but Erin decides to babysit for Jim and Pam instead, and Michael is upset because he auditioned for the lead and didn't get it.</td>
+      <td>8.2</td>
+      <td>2413</td>
+      <td>6.95</td>
+      <td>30</td>
+      <td>7 October 2010</td>
+      <td>-</td>
+      <td>John Scott</td>
+      <td>Charlie Grandy</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Sex Ed</td>
+      <td>A herpes scare causes Michael to get back in touch with his ex-girlfriends, where he decides to reevaluate those relationships. Meanwhile, Andy tries to teach safe sex to his officemates, but he has a clear ulterior motive.</td>
+      <td>7.8</td>
+      <td>2209</td>
+      <td>7.36</td>
+      <td>30</td>
+      <td>14 October 2010</td>
+      <td>-</td>
+      <td>Paul Lieberstein</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>The Sting</td>
+      <td>Michael organizes a sting operation to find out the secrets of a rival paper company's salesman who is stealing Dunder Mifflin's clients, and Andy gets Darryl's help to form a band.</td>
+      <td>7.8</td>
+      <td>2156</td>
+      <td>6.87</td>
+      <td>30</td>
+      <td>21 October 2010</td>
+      <td>Timothy Olyphant</td>
+      <td>Randall Einhorn</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Costume Contest</td>
+      <td>It's Halloween at Dunder Mifflin, and Michael is upset that Darryl went over his head with an idea, and Jim and Pam are obsessed with finding out why Danny didn't call Pam back when they were dating four years ago.</td>
+      <td>8.2</td>
+      <td>2249</td>
+      <td>8.07</td>
+      <td>30</td>
+      <td>28 October 2010</td>
+      <td>-</td>
+      <td>Dean Holland</td>
+      <td>Justin Spitzer</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Christening</td>
+      <td>During Jim and Pam's daughter's christening, Michael becomes upset over the lack of family-like unity between himself and his employees. So he responds by impulsively joining a teenage church mission to Mexico.</td>
+      <td>7.4</td>
+      <td>2238</td>
+      <td>7.65</td>
+      <td>23</td>
+      <td>4 November 2010</td>
+      <td>-</td>
+      <td>Alex Hardcastle</td>
+      <td>Peter Ocko</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Viewing Party</td>
+      <td>Michael sabotages Erin's "Glee" viewing party because of his contempt for Gabe, Jim and Pam discover that Dwight can keep their daughter from crying, and Andy has a bad reaction to a mixture of wine and a Japanese stimulant.</td>
+      <td>7.8</td>
+      <td>2200</td>
+      <td>7.15</td>
+      <td>30</td>
+      <td>11 November 2010</td>
+      <td>-</td>
+      <td>Ken Whittingham</td>
+      <td>Jon Vitti</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>WUPHF.com</td>
+      <td>Some co-workers who invested in Ryan's Internet venture want him to sell, but Michael refuses to go along. Meanwhile, Jim loses his motivation to work when he reaches his commission cap, ...\n                    See full summaryÃƒâ€šÃ‚Â Ãƒâ€šÃ‚Â»</td>
+      <td>7.7</td>
+      <td>2141</td>
+      <td>7.28</td>
+      <td>30</td>
+      <td>18 November 2010</td>
+      <td>-</td>
+      <td>See full summary</td>
+      <td>Aaron Shure</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>China</td>
+      <td>Pam stands up to Dwight when he makes cutbacks to save money in the building, but will Dwight have the last laugh? Meanwhile, the office is surprised and energized when Michael outsmarts Oscar in a debate about China.</td>
+      <td>8.2</td>
+      <td>2246</td>
+      <td>7.31</td>
+      <td>30</td>
+      <td>2 December 2010</td>
+      <td>-</td>
+      <td>Charles McDougall</td>
+      <td>Halsted Sullivan | Warren Lieberstein</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Classy Christmas</td>
+      <td>Michael throws an elaborate Christmas party to celebrate Holly's temporary return to the Scranton branch, but is disappointed when he learns that she still has a boyfriend.</td>
+      <td>9.0</td>
+      <td>2878</td>
+      <td>7.18</td>
+      <td>60</td>
+      <td>9 December 2010</td>
+      <td>-</td>
+      <td>Rainn Wilson</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Ultimatum</td>
+      <td>Michael gets upset when Holly returns from the holidays without an engagement ring, but still together with her boyfriend. Meanwhile, Pam tries to help her co-workers keep with their New Year's resolutions.</td>
+      <td>8.3</td>
+      <td>2282</td>
+      <td>8.26</td>
+      <td>30</td>
+      <td>20 January 2011</td>
+      <td>-</td>
+      <td>David Rogers</td>
+      <td>Carrie Kemper</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>The Seminar</td>
+      <td>Andy tries to host a small business seminar at the office. Michael agrees to help by posing as a Greek entrepreneur, and tries to get Holly to play along.</td>
+      <td>7.6</td>
+      <td>2171</td>
+      <td>7.93</td>
+      <td>30</td>
+      <td>27 January 2011</td>
+      <td>Ricky Gervais</td>
+      <td>B.J. Novak</td>
+      <td>Steve Hely</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>The Search</td>
+      <td>When Jim gets an emergency phone call from Helene, he is forced to leave Michael in the bathroom of a gas station. Meanwhile, Holly, Erin, and Dwight set out on a journey to find Michael. ...\n                    See full summaryÃƒâ€šÃ‚Â Ãƒâ€šÃ‚Â»</td>
+      <td>8.5</td>
+      <td>2369</td>
+      <td>7.29</td>
+      <td>30</td>
+      <td>3 February 2011</td>
+      <td>Will Arnett,  Ray Romano, Jim Carrey, Ricky Gervais</td>
+      <td>See full summary</td>
+      <td>Brent Forrester</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>PDA</td>
+      <td>It's Valentine's Day, and the office is fed up with Michael and Holly's PDA, Andy helps Erin solve Gabe's riddles to find her gift, and Jim and Pam get drunk and try to find a place in the office to have sex.</td>
+      <td>8.4</td>
+      <td>2347</td>
+      <td>6.90</td>
+      <td>22</td>
+      <td>10 February 2011</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Robert Padnick</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Threat Level Midnight</td>
+      <td>Michael finally finishes his movie "Threat Level Midnight" and screens it for his employees at Dunder Mifflin, but Holly is less than enthusiastic for his finished product.</td>
+      <td>9.4</td>
+      <td>4877</td>
+      <td>6.41</td>
+      <td>30</td>
+      <td>17 February 2011</td>
+      <td>-</td>
+      <td>Tucker Gates</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Todd Packer</td>
+      <td>Everyone is up in arms after Michael convinces Holly to give Todd Packer an office job, and Andy gets upset after Pam gets a new computer for reception but not for him.</td>
+      <td>7.5</td>
+      <td>2123</td>
+      <td>6.12</td>
+      <td>30</td>
+      <td>24 February 2011</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Amelie Gillette</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Garage Sale</td>
+      <td>Michael plans to propose to Holly the day of the Dunder Mifflin garage sale, but Holly may have to take an extended leave of absence to Colorado because her father is sick.</td>
+      <td>9.3</td>
+      <td>3730</td>
+      <td>7.07</td>
+      <td>30</td>
+      <td>24 March 2011</td>
+      <td>-</td>
+      <td>Steve Carell</td>
+      <td>Jon Vitti</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Training Day</td>
+      <td>Michael makes fast friends with the man coming in to replace him at Dunder Mifflin, but later begins to have second thoughts after seeing him in action.</td>
+      <td>7.8</td>
+      <td>2215</td>
+      <td>7.87</td>
+      <td>30</td>
+      <td>14 April 2011</td>
+      <td>Will Ferrell</td>
+      <td>Paul Lieberstein</td>
+      <td>Daniel Chun</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Michael's Last Dundies</td>
+      <td>Michael hosts his final "Dundies" as the boss at the Scranton branch, but tension is in the air, and Deangelo Vickers, the new boss, is having trouble with his co-hosting duties.</td>
+      <td>9.0</td>
+      <td>3039</td>
+      <td>6.85</td>
+      <td>23</td>
+      <td>21 April 2011</td>
+      <td>-</td>
+      <td>Mindy Kaling</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Goodbye, Michael</td>
+      <td>As the office gets ready for Michael's final day at Dunder Mifflin, Michael doesn't tell anyone that he's leaving a day early. Meanwhile, Deangelo accompanies a nervous Andy on a visit to one of Michael's old clients.</td>
+      <td>9.8</td>
+      <td>8059</td>
+      <td>8.42</td>
+      <td>50</td>
+      <td>28 April 2011</td>
+      <td>-</td>
+      <td>Paul Feig</td>
+      <td>Greg Daniels</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>The Inner Circle</td>
+      <td>Tensions rise and feelings are hurt when Deangelo creates an "inner circle" at the office--which is only composed of men.</td>
+      <td>7.6</td>
+      <td>2183</td>
+      <td>6.90</td>
+      <td>23</td>
+      <td>5 May 2011</td>
+      <td>-</td>
+      <td>Matt Sohn</td>
+      <td>Charlie Grandy</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Dwight K. Schrute, (Acting) Manager</td>
+      <td>When Jim rejects Jo's offer, Dwight becomes acting manager at the Scranton branch, but an accident could cause his tenure to be short-lived.</td>
+      <td>8.7</td>
+      <td>2414</td>
+      <td>6.45</td>
+      <td>23</td>
+      <td>12 May 2011</td>
+      <td>-</td>
+      <td>Troy Miller</td>
+      <td>Justin Spitzer</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Search Committee</td>
+      <td>The Scranton branch puts together a search committee to find the next boss, but the pool of interviewees proves to be less than impressive, and Dwight demands an interview in spite of his gun accident.</td>
+      <td>8.8</td>
+      <td>2623</td>
+      <td>7.29</td>
+      <td>42</td>
+      <td>19 May 2011</td>
+      <td>-</td>
+      <td>Jeffrey Blitz</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>The List</td>
+      <td>New Dunder Mifflin CEO Robert California leaves a piece of paper with a line down the middle that has names of the Scranton staff on either side of it, leading everyone to try and figure out what it means.</td>
+      <td>8.1</td>
+      <td>2366</td>
+      <td>7.64</td>
+      <td>23</td>
+      <td>22 September 2011</td>
+      <td>-</td>
+      <td>B.J. Novak</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>The Incentive</td>
+      <td>Under pressure from Robert to increase branch sales, Andy offers an incentive program to the sales staff, which backfires on him when he offers a very personal grand prize.</td>
+      <td>8.1</td>
+      <td>2200</td>
+      <td>6.70</td>
+      <td>23</td>
+      <td>29 September 2011</td>
+      <td>-</td>
+      <td>Charles McDougall</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Lotto</td>
+      <td>After the entire warehouse staff wins the lottery and quits their job, Darryl becomes depressed and demands to be fired. Meanwhile, the office staff is forced to load the truck for their orders themselves.</td>
+      <td>7.3</td>
+      <td>2098</td>
+      <td>5.82</td>
+      <td>23</td>
+      <td>6 October 2011</td>
+      <td>-</td>
+      <td>John Krasinski</td>
+      <td>Charlie Grandy</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Garden Party</td>
+      <td>Andy claims to be throwing a garden party at Dwight's farm to impress Robert California, but he's really doing it to win the approval of his parents, who appear to favor his younger brother.</td>
+      <td>8.1</td>
+      <td>2266</td>
+      <td>6.08</td>
+      <td>23</td>
+      <td>13 October 2011</td>
+      <td>Josh Groban, Stephen Collins</td>
+      <td>David Rogers</td>
+      <td>Justin Spitzer</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Spooked</td>
+      <td>Erin is worried that she is about to get fired after she organizes a disastrous office Halloween party for Robert and his son. Meanwhile, Robert probes the minds of the employees to come up with the perfect spooky story.</td>
+      <td>7.5</td>
+      <td>2024</td>
+      <td>5.53</td>
+      <td>23</td>
+      <td>27 October 2011</td>
+      <td>-</td>
+      <td>Randall Einhorn</td>
+      <td>Carrie Kemper</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Doomsday</td>
+      <td>Dwight installs a "Doomsday Device" on the office computers that could get everyone fired if they make too many mistakes, while Gabe tries to hit on one of Darryl's warehouse employees.</td>
+      <td>7.7</td>
+      <td>1948</td>
+      <td>6.15</td>
+      <td>23</td>
+      <td>3 November 2011</td>
+      <td>-</td>
+      <td>Troy Miller</td>
+      <td>Daniel Chun</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Pam's Replacement</td>
+      <td>A pregnant and insecure Pam tries to prove that Jim is attracted to her temp replacement, and Robert and his musician friends take over a jam session with Andy, Kevin, and Darryl.</td>
+      <td>7.7</td>
+      <td>2077</td>
+      <td>5.96</td>
+      <td>23</td>
+      <td>10 November 2011</td>
+      <td>-</td>
+      <td>Matt Sohn</td>
+      <td>Allison Silverman</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Gettysburg</td>
+      <td>Andy decides to motivate and inspire everyone by taking them on a field trip to Gettysburg. Some people in the office stay behind and Robert California asks them to come up with Dunder Mifflin/Sabre's next big idea.</td>
+      <td>6.9</td>
+      <td>2089</td>
+      <td>5.50</td>
+      <td>23</td>
+      <td>17 November 2011</td>
+      <td>-</td>
+      <td>Jeffrey Blitz</td>
+      <td>Robert Padnick</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Mrs. California</td>
+      <td>Robert brings his wife to the office so that she can find a job, but he gives Andy conflicting messages about whether to hire her. Meanwhile, Dwight opens a gym in the building and tries to persuade Darryl to join.</td>
+      <td>7.7</td>
+      <td>2050</td>
+      <td>5.71</td>
+      <td>23</td>
+      <td>1 December 2011</td>
+      <td>Maura Tierney</td>
+      <td>Charlie Grandy</td>
+      <td>Dan Greaney</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Christmas Wishes</td>
+      <td>Andy tries to make this year's Christmas the best ever by granting each person's holiday wishes. Meanwhile, Robert California tries to drown his sorrows at the office party.</td>
+      <td>7.9</td>
+      <td>2020</td>
+      <td>5.79</td>
+      <td>23</td>
+      <td>8 December 2011</td>
+      <td>-</td>
+      <td>Ed Helms</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Trivia</td>
+      <td>Andy hopes to make up for a sales deficiency by entering and winning a bar trivia competition, while Dwight flies to corporate headquarters in Florida to demand a management interview with Robert.</td>
+      <td>7.9</td>
+      <td>1980</td>
+      <td>5.90</td>
+      <td>23</td>
+      <td>12 January 2012</td>
+      <td>-</td>
+      <td>B.J. Novak</td>
+      <td>Steve Hely</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Pool Party</td>
+      <td>Robert throws a party for the Dunder Mifflin staff at his house before he sells it because of his divorce. At the party, Erin and Dwight agree to flirt with each other to make Andy jealous, and Jim tries in vain to duck out early.</td>
+      <td>8.0</td>
+      <td>2139</td>
+      <td>6.02</td>
+      <td>23</td>
+      <td>19 January 2012</td>
+      <td>-</td>
+      <td>Charles McDougall</td>
+      <td>Owen Ellickson</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Jury Duty</td>
+      <td>Jim gets caught in a lie about his week of "jury duty," and new questions emerge when Angela gives birth to a "premature" baby.</td>
+      <td>7.4</td>
+      <td>1937</td>
+      <td>5.31</td>
+      <td>23</td>
+      <td>2 February 2012</td>
+      <td>-</td>
+      <td>Eric Appel</td>
+      <td>Aaron Shure</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Special Project</td>
+      <td>Andy puts Dwight in charge of a special project in Tallahassee, but Dwight doesn't like the team Andy's assembled for him. Meanwhile, Darryl tries to figure out the meaning of Val's Valentine's gift.</td>
+      <td>7.7</td>
+      <td>1891</td>
+      <td>5.19</td>
+      <td>23</td>
+      <td>9 February 2012</td>
+      <td>-</td>
+      <td>David Rogers</td>
+      <td>Amelie Gillette</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Tallahassee</td>
+      <td>Dwight refuses to let appendicitis get in the way of leading his new team in Tallahassee, while Andy decides to step in for Erin as secretary in the office.</td>
+      <td>7.8</td>
+      <td>1994</td>
+      <td>4.38</td>
+      <td>23</td>
+      <td>16 February 2012</td>
+      <td>-</td>
+      <td>Matt Sohn</td>
+      <td>Daniel Chun</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>After Hours</td>
+      <td>In Tallahassee, Dwight and Todd Packer try to romance Nellie to get the VP position, while Jim wonders if a colleague is trying to hit on him. Back in Scranton, Val's boyfriend shows up with a message for Darryl.</td>
+      <td>8.1</td>
+      <td>2068</td>
+      <td>5.02</td>
+      <td>23</td>
+      <td>23 February 2012</td>
+      <td>-</td>
+      <td>Brian Baumgartner</td>
+      <td>Halsted Sullivan | Warren Lieberstein</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Test the Store</td>
+      <td>Dwight and his team get ready for the grand opening of the Sabre Store, while Andy makes Toby teach self-defense to the Scranton branch employees after he is beat up in the parking lot by a girl.</td>
+      <td>7.8</td>
+      <td>1958</td>
+      <td>4.95</td>
+      <td>23</td>
+      <td>1 March 2012</td>
+      <td>-</td>
+      <td>Brent Forrester</td>
+      <td>Mindy Kaling</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Last Day in Florida</td>
+      <td>Jim tries to warn Dwight that he's going to be fired after Robert rejects the Sabre Store idea, but he refuses to listen. Meanwhile, Darryl and Toby try to sell cookies to Kevin, and Erin tells Andy she's not coming back from Florida.</td>
+      <td>7.8</td>
+      <td>1903</td>
+      <td>4.89</td>
+      <td>23</td>
+      <td>8 March 2012</td>
+      <td>-</td>
+      <td>Matt Sohn</td>
+      <td>Robert Padnick</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Get the Girl</td>
+      <td>Andy goes to Tallahassee to tell Erin that he loves her and needs her to return to Scranton. Meanwhile, Nellie shows up in Scranton and tries to claim Andy's manager position by offering everyone raises.</td>
+      <td>6.6</td>
+      <td>2203</td>
+      <td>4.87</td>
+      <td>23</td>
+      <td>15 March 2012</td>
+      <td>-</td>
+      <td>Rainn Wilson</td>
+      <td>Charlie Grandy</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Welcome Party</td>
+      <td>Andy tries to break up with his girlfriend after going to Florida to declare his love for Erin, and the office employees are forced against their will to throw a party for the hated Nellie.</td>
+      <td>7.1</td>
+      <td>1972</td>
+      <td>4.39</td>
+      <td>23</td>
+      <td>12 April 2012</td>
+      <td>-</td>
+      <td>Ed Helms</td>
+      <td>Steve Hely</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Angry Andy</td>
+      <td>Andy and Erin return to Dunder Mifflin, only to discover that Nellie has taken his job and office and refuses to give them up. Meanwhile, Ryan becomes jealous after Pam tries to play matchmaker for Kelly.</td>
+      <td>7.0</td>
+      <td>2107</td>
+      <td>4.35</td>
+      <td>23</td>
+      <td>19 April 2012</td>
+      <td>-</td>
+      <td>Claire Scanlon</td>
+      <td>Justin Spitzer</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Fundraiser</td>
+      <td>Andy confronts Robert for the first time after losing the manager position and quitting his job at a fund raiser sponsored by Angela's husband.</td>
+      <td>7.0</td>
+      <td>1902</td>
+      <td>4.17</td>
+      <td>23</td>
+      <td>26 April 2012</td>
+      <td>-</td>
+      <td>David Rogers</td>
+      <td>Owen Ellickson</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Turf War</td>
+      <td>Dwight and Jim fight with the Syracuse over a client after Robert shuts down the Binghamton branch, and Andy sees an opportunity for revenge. Meanwhile Robert tries to figure out the contents of a drunken voicemail to Nellie.</td>
+      <td>7.6</td>
+      <td>1832</td>
+      <td>4.44</td>
+      <td>23</td>
+      <td>3 May 2012</td>
+      <td>Chris Bauer</td>
+      <td>Daniel Chun</td>
+      <td>Warren Lieberstein | Halsted Sullivan</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Free Family Portrait Studio</td>
+      <td>With former CEO David Wallace's help, Andy launches a plan to get revenge on the Scranton branch. Meanwhile, Dwight launches his own plan to find out if he's the father of Angela's baby.</td>
+      <td>7.7</td>
+      <td>1918</td>
+      <td>4.49</td>
+      <td>23</td>
+      <td>10 May 2012</td>
+      <td>-</td>
+      <td>B.J. Novak</td>
+      <td>B. J. Novak</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>New Guys</td>
+      <td>Dwight and Jim are intimidated by the office's newest additions, who are considered younger versions of themselves. Meanwhile, Andy tries to make Nellie's life miserable, and Angela tries to get rid of one of her cats.</td>
+      <td>7.6</td>
+      <td>2074</td>
+      <td>4.28</td>
+      <td>23</td>
+      <td>20 September 2012</td>
+      <td>-</td>
+      <td>Greg Daniels</td>
+      <td>Greg Daniels</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Roy's Wedding</td>
+      <td>After Roy's wedding, Jim and Pam wonder if they still have any secrets they're hiding from each other. Meanwhile, Clark tricks Erin into a "news audition," and Dwight challenges Nellie's new charity initiative.</td>
+      <td>7.1</td>
+      <td>1963</td>
+      <td>4.13</td>
+      <td>23</td>
+      <td>27 September 2012</td>
+      <td>-</td>
+      <td>Matt Sohn</td>
+      <td>Allison Silverman</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Andy's Ancestry</td>
+      <td>Nellie plays a trick on Andy after researching his ancestry, Dwight teaches Erin a new language, and Pam tries to teach Nellie how to drive.</td>
+      <td>7.4</td>
+      <td>1938</td>
+      <td>4.14</td>
+      <td>23</td>
+      <td>4 October 2012</td>
+      <td>-</td>
+      <td>David Rogers</td>
+      <td>Jonathan Green | Gabe Miller</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Work Bus</td>
+      <td>When Jim convinces Dwight that the building is unsafe, Dwight rents a bus and sets up the office inside. Nellie asks for Andy's help in adopting a baby. Meanwhile, Jim tries to make Pam happy with some pie.</td>
+      <td>7.8</td>
+      <td>2059</td>
+      <td>4.28</td>
+      <td>22</td>
+      <td>18 October 2012</td>
+      <td>-</td>
+      <td>Bryan Cranston</td>
+      <td>Brent Forrester</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Here Comes Treble</td>
+      <td>On Halloween, the Cornell a Capella group pays a visit to Andy, Dwight discovers that Nellie takes anxiety pills, and Pam disapproves of Jim's business decision.</td>
+      <td>7.0</td>
+      <td>2021</td>
+      <td>4.00</td>
+      <td>22</td>
+      <td>25 October 2012</td>
+      <td>Stephen Colbert</td>
+      <td>Claire Scanlon</td>
+      <td>Owen Ellickson</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>The Boat</td>
+      <td>Andy has one last chance to captain the family boat before he sells it, Jim, Pam, and Nellie prank Dwight with a radio interview, and Kevin finds out about Oscar's affair with Angela's husband.</td>
+      <td>7.7</td>
+      <td>1955</td>
+      <td>4.83</td>
+      <td>22</td>
+      <td>8 November 2012</td>
+      <td>Josh Groban</td>
+      <td>John Krasinski</td>
+      <td>Dan Sterling</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>The Whale</td>
+      <td>The office trains Dwight to sell to a female client without being offensive, only to discover that the client is Jan Levinson. Angela and Oscar both think the senator is cheating on them, ...\n                    See full summaryÃƒâ€šÃ‚Â Ãƒâ€šÃ‚Â»</td>
+      <td>7.6</td>
+      <td>1872</td>
+      <td>4.16</td>
+      <td>22</td>
+      <td>15 November 2012</td>
+      <td>-</td>
+      <td>See full summary</td>
+      <td>Carrie Kemper</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>The Target</td>
+      <td>Angela orders a hit on Oscar for cheating with her husband, the office makes a tower with their customer complaint cards, Jim wines and dines Stanley and Phyllis in exchange for a favor, and Pam begins her mural.</td>
+      <td>7.8</td>
+      <td>1928</td>
+      <td>3.88</td>
+      <td>22</td>
+      <td>29 November 2012</td>
+      <td>-</td>
+      <td>Brent Forrester</td>
+      <td>Graham Wagner</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Dwight Christmas</td>
+      <td>Dwight puts together a Pennsylvania Dutch-themed office Christmas party, but he ends it abruptly because Jim has to leave for his other job. Meanwhile, Erin seeks comfort from a co-worker after a disappointing text from Andy.</td>
+      <td>8.4</td>
+      <td>2204</td>
+      <td>4.16</td>
+      <td>22</td>
+      <td>6 December 2012</td>
+      <td>-</td>
+      <td>Charles McDougall</td>
+      <td>Robert Padnick</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Lice</td>
+      <td>Pam causes a lice outbreak but lets Meredith take the blame, Jim has a business meeting with Dr. J, and some coworkers try to get Darryl and Val back together.</td>
+      <td>7.6</td>
+      <td>1952</td>
+      <td>4.54</td>
+      <td>22</td>
+      <td>10 January 2013</td>
+      <td>Julius Winfield Erving</td>
+      <td>Rodman Flender</td>
+      <td>Niki Schwartz-Wright</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Suit Warehouse</td>
+      <td>Dwight and Clark pose as father and son to get an account, Darryl goes for an interview with Jim's new business, and everybody in the office goes crazy over a new espresso machine.</td>
+      <td>7.8</td>
+      <td>1920</td>
+      <td>4.15</td>
+      <td>22</td>
+      <td>17 January 2013</td>
+      <td>-</td>
+      <td>Matt Sohn</td>
+      <td>Dan Greaney</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Customer Loyalty</td>
+      <td>Dwight tries to keep Daryl from leaving Dunder Mifflin, Jim misses his daughter's recital because of an important business meeting, and Nellie is worried that Erin will dump Andy for Pete.</td>
+      <td>7.9</td>
+      <td>1984</td>
+      <td>4.19</td>
+      <td>22</td>
+      <td>24 January 2013</td>
+      <td>-</td>
+      <td>Kelly Cantley-Kashima</td>
+      <td>Jonathan Green | Gabe Miller</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Junior Salesman</td>
+      <td>Dwight gets to hire a new salesman to replace Jim when he is at his other job. But will he promote Clark or go with one of his unqualified friends instead?</td>
+      <td>7.6</td>
+      <td>1866</td>
+      <td>4.45</td>
+      <td>22</td>
+      <td>31 January 2013</td>
+      <td>-</td>
+      <td>David Rogers</td>
+      <td>Carrie Kemper</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Vandalism</td>
+      <td>Pam tries to find out who vandalized her mural, Darryl finds out that Jim is a slob, and Oscar and Kevin go to Angela and The Senator's child's first birthday party.</td>
+      <td>7.5</td>
+      <td>1866</td>
+      <td>3.97</td>
+      <td>22</td>
+      <td>31 January 2013</td>
+      <td>-</td>
+      <td>Lee Kirk</td>
+      <td>Owen Ellickson</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Couples Discount</td>
+      <td>Andy returns after three months to an angry office and an even angrier girlfriend, and Jim's Valentines Day with Pam does not go as planned.</td>
+      <td>7.3</td>
+      <td>1888</td>
+      <td>4.15</td>
+      <td>22</td>
+      <td>7 February 2013</td>
+      <td>-</td>
+      <td>Troy Miller</td>
+      <td>Allison Silverman</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Moving On</td>
+      <td>Andy finds out that Erin dumped him for Pete, Dwight gets Angela's help taking care of his aunt, and Pam interviews with a real estate firm whose boss is a carbon-copy of Michael Scott.</td>
+      <td>8.1</td>
+      <td>2089</td>
+      <td>4.06</td>
+      <td>42</td>
+      <td>14 February 2013</td>
+      <td>-</td>
+      <td>Jon Favreau</td>
+      <td>Graham Wagner</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>The Farm</td>
+      <td>Show follows Dwight Schrute a beet farmer running a bed and breakfast inn.</td>
+      <td>7.5</td>
+      <td>2189</td>
+      <td>3.54</td>
+      <td>22</td>
+      <td>14 March 2013</td>
+      <td>-</td>
+      <td>Paul Lieberstein</td>
+      <td>Paul Lieberstein</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Promos</td>
+      <td>The release of the documentary promos creates tension for the Dunder Mifflin employees, Dwight considers a business venture with his girlfriend's family, and Jim and Darryl have an awkward business meeting with baseball player Ryan Howard.</td>
+      <td>8.0</td>
+      <td>1924</td>
+      <td>3.44</td>
+      <td>22</td>
+      <td>4 April 2013</td>
+      <td>Ryan Howard</td>
+      <td>Jennifer Celotta</td>
+      <td>Tim McAuliffe</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Stairmageddon</td>
+      <td>Dwight shoots Stanley with a bull tranquilizer after he refuses to go on a sales call, Jim and Pam head to marriage counseling, The Senator comes out of the closet, and Andy tries to find a talent agent.</td>
+      <td>8.0</td>
+      <td>1985</td>
+      <td>3.83</td>
+      <td>22</td>
+      <td>11 April 2013</td>
+      <td>-</td>
+      <td>Matt Sohn</td>
+      <td>Dan Sterling</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Paper Airplane</td>
+      <td>The employees hold a paper airplane competition, Andy gets an acting role in a workplace safety video, and Jim and Pam's marriage tensions continue to build.</td>
+      <td>8.0</td>
+      <td>2007</td>
+      <td>3.25</td>
+      <td>22</td>
+      <td>25 April 2013</td>
+      <td>-</td>
+      <td>Jesse Peretz</td>
+      <td>Halsted Sullivan | Warren Lieberstein</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Livin' the Dream</td>
+      <td>Dwight becomes regional manager after Andy quits his job, Jim dedicates more time to his Dunder Mifflin job to save his marriage, and Angela has problems with her new living arrangements after her breakup with The Senator.</td>
+      <td>9.0</td>
+      <td>2831</td>
+      <td>3.51</td>
+      <td>42</td>
+      <td>2 May 2013</td>
+      <td>Michael Imperioli</td>
+      <td>Jeffrey Blitz</td>
+      <td>Niki Schwartz-Wright</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>A.A.R.M.</td>
+      <td>Dwight prepares for a marriage proposal and hires an assistant for his assistant, Andy auditions for a singing program, Darryl tries to leave his job without a fuss, and Pam has second thoughts about Jim staying in Scranton.</td>
+      <td>9.5</td>
+      <td>3914</td>
+      <td>4.56</td>
+      <td>43</td>
+      <td>9 May 2013</td>
+      <td>-</td>
+      <td>David Rogers</td>
+      <td>Brent Forrester</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Finale</td>
+      <td>One year later, Dunder Mifflin employees past and present reunite for a panel discussion about the documentary and to attend Dwight and Angela's wedding.</td>
+      <td>9.8</td>
+      <td>10515</td>
+      <td>5.69</td>
+      <td>51</td>
+      <td>16 May 2013</td>
+      <td>Joan Cusack, Ed Begley Jr, Rachel Harris, Nancy Walls</td>
+      <td>Ken Kwapis</td>
+      <td>Greg Daniels</td>
+    </tr>
+  </tbody>
+</table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ url_for('static', filename="vendor/jquery/jquery.min.js")}}"></script>
+    <script src="{{ url_for('static', filename="vendor/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ url_for('static', filename="vendor/jquery-easing/jquery.easing.min.js")}}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ url_for('static', filename="js/sb-admin-2.min.js")}}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ url_for('static', filename="vendor/datatables/jquery.dataTables.min.js")}}"></script>
+    <script src="{{ url_for('static', filename="vendor/datatables/dataTables.bootstrap4.min.js")}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ url_for('static', filename="js/demo/datatables-demo.js")}}"></script>
+
+</body>
+
+</html>
